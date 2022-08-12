@@ -1,0 +1,65 @@
+package com.revature.P0StoreApp.models;
+
+public class customer {
+	private int customerID;
+	private String fname;
+	private String lname;
+	private String c_un;
+	private String c_pw;
+	private String email;
+	
+//	public customer(int i, String fname2, String lname2, String un, String pw, String email2) {
+//		// TODO Auto-generated constructor stub
+//		
+//	}
+
+	public customer(String fname, String lname, String c_un, String c_pw, String email) {
+		// TODO Auto-generated constructor stub
+		this.fname = fname;
+		this.lname = lname;
+		this.c_un = c_un;
+		this.c_pw = c_pw;
+		this.email = email;
+	}
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	public String getC_un() {
+		return c_un;
+	}
+	public void setC_un(String c_un) {
+		this.c_un = c_un;
+	}
+	public String getC_pw() {
+		return c_pw;
+	}
+	public void setC_pw(String c_pw) {
+		this.c_pw = c_pw;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+}

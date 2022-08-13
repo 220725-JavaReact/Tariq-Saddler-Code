@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.revature.P0StoreApp.dl.CustomerDAO;
 import com.revature.P0StoreApp.dl.DAO;
 import com.revature.P0StoreApp.dl.StoreDAO;
+import com.revature.P0StoreApp.dl.ProductsDAO;
 import com.revature.P0StoreApp.models.cart;
 import com.revature.P0StoreApp.models.customer;
 import com.revature.P0StoreApp.models.products;
@@ -14,6 +15,7 @@ import com.revature.P0StoreApp.models.store;
 public class Menu {
 	private static DAO<customer> customerDao = new CustomerDAO();
 	private static DAO<store> storeDao = new StoreDAO();
+	private static DAO<products> productDao = new ProductsDAO();
 	public static void open()
 	{
 		loginOrRegisterHere();
@@ -149,7 +151,7 @@ public class Menu {
 			{
 				System.out.println("At your service, " + person.getFname() + " " + person.getLname() + ".");
 				currentID = person.getCustomerID();
-				shopHere(currentID, person.getFname());
+				storeSelect(currentID, person.getFname());
 				break;
 			}
 		}
@@ -193,13 +195,97 @@ public class Menu {
 		loginOrRegisterHere();
 	}
 	
-	public static void shopHere(int currentID, String currentName)
+	public static void storeSelect(int currentID, String currentName)
 	{
+		Scanner scanner = new Scanner(System.in);
+		int userInput = 0;
 		int i = 1;
-		System.out.println("Master " + currentName + ", please select the store ");
-		for(store shop: storeDao.getAllInstances()) {
+		System.out.println("Master " + currentName + ", please select the store's number you would like to shop at ");
+		for(store shop: storeDao.getAllInstances())
+		{
 			System.out.println("Store " + i + ": " + shop.getStoreName() + " at " + shop.getStoreAddress() + ".");
 			i++;
 		}
+		userInput = scanner.nextInt();
+		for(store shop: storeDao.getAllInstances()) 
+		{
+			if(shop.getStoreID() == userInput -1)
+			{
+				shopHere(currentID, currentName, shop.getStoreID()+1, shop.getStoreName());
+				break;
+			}
+		}
+		System.out.println("NUMBER NOT VALID");
+		storeSelect(currentID, currentName);
+	}
+	
+	public static void shopHere(int currentID, String currentName, int storeID, String storeName)
+	{
+		Scanner scanner = new Scanner(System.in);
+		int i =  0;
+		String userInput = "";
+		int currentProductID = -1;
+		String currentProduct = "";
+		int currentInv = 0;
+		double cartTotal = 0.0;
+		double currentPrice = 0.0;
+		int numOfItems = 0;
+		
+		//NEED TO CREATE CART INSTANCE
+		
+		String productNameInput = "";
+		
+		do {
+		System.out.println("------------------------------");
+		System.out.println("Welcome to " + storeName + "!");
+		System.out.println("------------------------------");
+		
+		
+		for(products product: productDao.getAllInstances())
+		{
+			if(storeID == product.getMyStoreID())
+			{
+				System.out.println(product.getName()+ ": " + product.getDetails() + "-----$" + product.getPrice() + "-----(" + product.getInventory() + ") IN STOCK");
+				i++;
+			}
+		}
+		System.out.println("------------------------------");
+		System.out.println("Which product would you like to add to your cart? (Type the name of the product)");
+		productNameInput = scanner.nextLine();
+		
+		for(products product: productDao.getAllInstances())
+		{
+			if(productNameInput.equals(product.getName()))
+			{
+				currentProductID = product.getProductID();
+				currentProduct = product.getName();
+				currentInv = product.getInventory();
+				break;
+			}
+		}
+		
+		System.out.println("------------------------------");
+		System.out.println("How many units of " + currentProduct + " would you like to purchase? (" + currentInv + ") IN STOCK");
+		numOfItems = scanner.nextInt();
+		
+		//MAKE A DECREMEMNT INVENTORY DAO METHOD IN DAO and ProductsDAO
+		//IMPLEMENT HERE, OF COURSE
+		
+		cartTotal += numOfItems * currentPrice;
+		
+		System.out.println("------------------------------");
+		System.out.println("Type 'shop' to continue shopping. 'checkout' to check out your cart!");
+		
+		//if 'checkout', checkout method will add the cart to order_history and oh_product_list
+		//Easy!
+		
+		
+		}while(userInput != "quit");
+		
+	}
+	
+	public static void addToCart()
+	{
+		
 	}
 }

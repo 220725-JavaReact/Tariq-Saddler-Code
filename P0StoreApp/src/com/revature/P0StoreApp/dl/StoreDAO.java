@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 import com.revature.P0StoreApp.models.store;
 import com.revature.P0StoreApp.storage.StoreList;
 import com.revature.P0StoreApp.util.ConnectionFactory;

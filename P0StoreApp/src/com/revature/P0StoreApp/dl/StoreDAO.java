@@ -34,4 +34,10 @@ public class StoreDAO implements DAO<store> {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void decrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
 }

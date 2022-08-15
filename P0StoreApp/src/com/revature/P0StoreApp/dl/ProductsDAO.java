@@ -1,6 +1,7 @@
 package com.revature.P0StoreApp.dl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +16,7 @@ public class ProductsDAO implements DAO<products>{
 	@Override
 	public void addInstance(products newInstance) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -34,6 +36,20 @@ public class ProductsDAO implements DAO<products>{
 			e.printStackTrace();
 		}
 		return pList.getAllElements();
+	}
+
+	@Override
+	public void decrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			//String query = "Insert into CustomerInfo (c_fname, c_lname, un, pw, email) values (?, ?, ?, ?, ?)";
+			String query = "update products set inventory = inventory - " + howMany + " where ProductID = " + productID;
+			PreparedStatement pstmt = connie.prepareStatement(query);
+			pstmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

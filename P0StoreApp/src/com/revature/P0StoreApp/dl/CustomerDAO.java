@@ -49,6 +49,14 @@ public class CustomerDAO implements DAO<customer>{
 		}
 		return cList.getAllElements();
 	}
+
+
+
+	@Override
+	public void decrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

@@ -5,10 +5,14 @@ import java.util.Scanner;
 
 import com.revature.P0StoreApp.dl.CustomerDAO;
 import com.revature.P0StoreApp.dl.DAO;
+import com.revature.P0StoreApp.dl.OHProductListDAO;
+import com.revature.P0StoreApp.dl.OrdersDAO;
 import com.revature.P0StoreApp.dl.StoreDAO;
 import com.revature.P0StoreApp.dl.ProductsDAO;
-import com.revature.P0StoreApp.models.cart;
+
 import com.revature.P0StoreApp.models.customer;
+import com.revature.P0StoreApp.models.oh_product_list;
+import com.revature.P0StoreApp.models.order_history;
 import com.revature.P0StoreApp.models.products;
 import com.revature.P0StoreApp.models.store;
 
@@ -16,6 +20,8 @@ public class Menu {
 	private static DAO<customer> customerDao = new CustomerDAO();
 	private static DAO<store> storeDao = new StoreDAO();
 	private static DAO<products> productDao = new ProductsDAO();
+	private static DAO<order_history> ordersDao = new OrdersDAO();
+	private static DAO<oh_product_list> ohproductsDao = new OHProductListDAO();
 	public static void open()
 	{
 		loginOrRegisterHere();
@@ -231,7 +237,8 @@ public class Menu {
 		double currentPrice = 0.0;
 		int numOfItems = 0;
 		
-		//NEED TO CREATE CART INSTANCE
+		ArrayList<Integer> cart = new ArrayList<Integer>();//lol the cart is just a list of product ID's
+		
 		
 		String productNameInput = "";
 		
@@ -269,23 +276,32 @@ public class Menu {
 		numOfItems = scanner.nextInt();
 		
 		//MAKE A DECREMEMNT INVENTORY DAO METHOD IN DAO and ProductsDAO
-		//IMPLEMENT HERE, OF COURSE
+		productDao.decrementInventory(numOfItems, currentProductID);
+		
+		for(int x = 0; x<numOfItems; x++)
+		{
+			cart.add(currentProductID);
+		}
+		
 		
 		cartTotal += numOfItems * currentPrice;
 		
 		System.out.println("------------------------------");
 		System.out.println("Type 'shop' to continue shopping. 'checkout' to check out your cart!");
-		
+		userInput = scanner.nextLine();
 		//if 'checkout', checkout method will add the cart to order_history and oh_product_list
+		//Iterate through the cart and add the products to the order_history and oh_product_list
+		//If the productID is already in OH under the same OrderID, increment OHPL how_many with same orderID and productID as OH
 		//Easy!
+		
+		for(int x = 0; x<cart.size(); x++)
+		{
+			ordersDao.addInstance(cart.get(i), currentID, "Datetime", cartTotal);//storeID, customerID, datetime, total_cost
+		}
 		
 		
 		}while(userInput != "quit");
 		
 	}
 	
-	public static void addToCart()
-	{
-		
-	}
 }

@@ -2,15 +2,15 @@ package com.revature.P0StoreApp.models;
 
 public class oh_product_list {
 	private int orderID;
-	private int storeID;
+	private int productID;
 	private int customerID;
 	private int howMany;
 	
 	
-	public oh_product_list(int orderID, int storeID, int customerID, int howMany)
+	public oh_product_list(int orderID, int productID, int customerID, int howMany)
 	{
 		this.orderID = orderID;
-		this.storeID = storeID;
+		this.productID = productID;
 		this.customerID = customerID;
 		this.howMany = howMany;
 	}
@@ -21,11 +21,11 @@ public class oh_product_list {
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
-	public int getStoreID() {
-		return storeID;
+	public int getProductID() {
+		return productID;
 	}
-	public void setStoreID(int storeID) {
-		this.storeID = storeID;
+	public void setProductID(int storeID) {
+		this.productID = storeID;
 	}
 	public int getCustomerID() {
 		return customerID;

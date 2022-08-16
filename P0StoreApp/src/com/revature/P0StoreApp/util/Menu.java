@@ -9,6 +9,8 @@ import com.revature.P0StoreApp.dl.OHProductListDAO;
 import com.revature.P0StoreApp.dl.OrdersDAO;
 import com.revature.P0StoreApp.dl.StoreDAO;
 import com.revature.P0StoreApp.dl.ProductsDAO;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.revature.P0StoreApp.models.customer;
 import com.revature.P0StoreApp.models.oh_product_list;
@@ -156,7 +158,7 @@ public class Menu {
 			if(person.getC_un().equals(currentUN) && person.getC_pw().equals(currentPW))
 			{
 				System.out.println("At your service, " + person.getFname() + " " + person.getLname() + ".");
-				currentID = person.getCustomerID();
+				currentID = customerDao.findID(person);
 				storeSelect(currentID, person.getFname());
 				break;
 			}
@@ -259,21 +261,27 @@ public class Menu {
 		System.out.println("------------------------------");
 		System.out.println("Which product would you like to add to your cart? (Type the name of the product)");
 		productNameInput = scanner.nextLine();
-		
+		i = 0;
 		for(products product: productDao.getAllInstances())
 		{
+//			System.out.println(product.getProductID());
+//			System.out.println(product.getName());
 			if(productNameInput.equals(product.getName()))
 			{
-				currentProductID = product.getProductID();
+				currentProductID = productDao.findID(product);
+				System.out.println("PID: " + currentProductID);
 				currentProduct = product.getName();
+				currentPrice = product.getPrice();
 				currentInv = product.getInventory();
 				break;
 			}
+			i++;
 		}
 		
 		System.out.println("------------------------------");
 		System.out.println("How many units of " + currentProduct + " would you like to purchase? (" + currentInv + ") IN STOCK");
 		numOfItems = scanner.nextInt();
+		scanner.nextLine();
 		
 		//MAKE A DECREMEMNT INVENTORY DAO METHOD IN DAO and ProductsDAO
 		productDao.decrementInventory(numOfItems, currentProductID);
@@ -282,7 +290,7 @@ public class Menu {
 		{
 			cart.add(currentProductID);
 		}
-		
+		System.out.println(cart.get(0) + " is the product ID in cart slot 0");
 		
 		cartTotal += numOfItems * currentPrice;
 		
@@ -294,10 +302,39 @@ public class Menu {
 		//If the productID is already in OH under the same OrderID, increment OHPL how_many with same orderID and productID as OH
 		//Easy!
 		
-		for(int x = 0; x<cart.size(); x++)
+		if(userInput.equals("checkout"))
 		{
-			ordersDao.addInstance(cart.get(i), currentID, "Datetime", cartTotal);//storeID, customerID, datetime, total_cost
+			int cartItem = 0;
+			
+			String dateTime = LocalDateTime.now().toString();
+			order_history oHistory = new order_history(storeID, currentID, dateTime, cartTotal);
+			
+			ordersDao.addInstance(oHistory);
+			int thisOrderID = ordersDao.findID(oHistory);
+			
+			oh_product_list ohList = new oh_product_list(thisOrderID, cart.get(0), currentID, 1);
+			ohproductsDao.addInstance(ohList);
+			
+			for(int x = 1; x<cart.size(); x++)
+			{
+				for(oh_product_list ohpList: ohproductsDao.getAllInstances())
+				{
+					if(ohpList.getProductID() == cart.get(x))
+					{
+							//Make a DAO method for incrementing how_many
+						ohproductsDao.incrementNumber(thisOrderID, currentProductID);
+					}
+					else
+					{
+						oh_product_list newList = new oh_product_list(thisOrderID, cart.get(x), currentID, 1);
+						ohproductsDao.addInstance(newList);
+					}
+				}
+			}
+			
 		}
+		
+		
 		
 		
 		}while(userInput != "quit");

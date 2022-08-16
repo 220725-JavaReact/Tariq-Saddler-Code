@@ -8,9 +8,8 @@ public class order_history {
 	private double totalCost;
 	
 	
-	public order_history(int orderID, int storeID, int customerID, String dateTime, double totalCost)
+	public order_history(int storeID, int customerID, String dateTime, double totalCost)
 	{
-		this.orderID = orderID;
 		this.storeID = storeID;
 		this.customerID = customerID;
 		this.dateTime = dateTime;

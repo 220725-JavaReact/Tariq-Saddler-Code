@@ -40,4 +40,16 @@ public class StoreDAO implements DAO<store> {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int findID(store newInstance) {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
+	@Override
+	public void incrementNumber(int orderID, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
 }

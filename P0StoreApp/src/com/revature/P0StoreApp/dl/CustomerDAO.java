@@ -57,6 +57,33 @@ public class CustomerDAO implements DAO<customer>{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int findID(customer newInstance) {
+		// TODO Auto-generated method stub
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			String query = "select customerid from CustomerInfo where email = '" + newInstance.getEmail() + "'";//(fk_StoreID, fk_CustomerID, datetime, total_cost) values (?, ?, ?, ?)";
+			//PreparedStatement pstmt = connie.prepareStatement(query);
+			//pstmt.setString(1, newInstance.getName()); 
+			Statement stmt = connie.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while(rs.next()) {
+				return rs.getInt("customerid");
+			}
+			
+			//pstmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	@Override
+	public void incrementNumber(int orderID, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

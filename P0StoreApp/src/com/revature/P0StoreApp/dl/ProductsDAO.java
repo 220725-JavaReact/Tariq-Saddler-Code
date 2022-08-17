@@ -80,6 +80,22 @@ public class ProductsDAO implements DAO<products>{
 	public void incrementNumber(int orderID, int productID) {
 		// TODO Auto-generated method stub
 		
+		
+	}
+
+	@Override
+	public void incrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			//String query = "Insert into CustomerInfo (c_fname, c_lname, un, pw, email) values (?, ?, ?, ?, ?)";
+			String query = "update products set inventory = inventory + ? where ProductID = ?";
+			PreparedStatement pstmt = connie.prepareStatement(query);
+			pstmt.setInt(1, howMany); 
+			pstmt.setInt(2, productID);
+			pstmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

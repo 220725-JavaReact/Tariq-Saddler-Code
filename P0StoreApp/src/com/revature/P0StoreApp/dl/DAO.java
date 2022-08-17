@@ -8,4 +8,5 @@ public interface DAO<T> {
 	void decrementInventory (int howMany, int productID);
 	void incrementNumber(int orderID, int productID);
 	int findID(T newInstance);
+	void incrementInventory (int howMany, int productID);
 }

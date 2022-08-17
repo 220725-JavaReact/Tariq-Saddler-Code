@@ -79,4 +79,10 @@ public class OHProductListDAO implements DAO<oh_product_list>{
 		
 	}
 
+	@Override
+	public void incrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

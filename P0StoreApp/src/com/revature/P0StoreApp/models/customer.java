@@ -34,13 +34,15 @@ public class customer {
 		return fname;
 	}
 	public void setFname(String fname) {
-		this.fname = fname;
+		String str = fname.substring(0, 1).toUpperCase() + fname.substring(1);
+		this.fname = str;
 	}
 	public String getLname() {
 		return lname;
 	}
 	public void setLname(String lname) {
-		this.lname = lname;
+		String str = lname.substring(0, 1).toUpperCase() + lname.substring(1);
+		this.lname = str;
 	}
 	public String getC_un() {
 		return c_un;

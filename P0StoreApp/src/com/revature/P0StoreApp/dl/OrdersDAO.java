@@ -3,11 +3,15 @@ package com.revature.P0StoreApp.dl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.RowId;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.revature.P0StoreApp.models.oh_product_list;
 import com.revature.P0StoreApp.models.order_history;
+import com.revature.P0StoreApp.storage.OHProductListList;
+import com.revature.P0StoreApp.storage.OrderHistoryList;
 import com.revature.P0StoreApp.util.ConnectionFactory;
 
 public class OrdersDAO implements DAO<order_history>{
@@ -30,8 +34,20 @@ public class OrdersDAO implements DAO<order_history>{
 
 	@Override
 	public ArrayList<order_history> getAllInstances() {
-		// TODO Auto-generated method stub
-		return null;
+		OrderHistoryList ohList = new OrderHistoryList();
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			String query = "select * from order_history";
+			Statement stmt = connie.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				ohList.add(new order_history(rs.getInt("fk_StoreID"), rs.getInt("fk_CustomerID"), rs.getString("datetime"), rs.getDouble("total_cost")));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ohList.getAllElements();
 	}
 
 	@Override
@@ -51,10 +67,9 @@ public class OrdersDAO implements DAO<order_history>{
 //			pstmt.setDouble(4, newInstance.getTotalCost());
 			Statement stmt = connie.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.isFirst()) {
+			while(rs.next()) {
 				return rs.getInt("orderid");
 			}
-			
 			//pstmt.execute();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -65,6 +80,12 @@ public class OrdersDAO implements DAO<order_history>{
 
 	@Override
 	public void incrementNumber(int orderID, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void incrementInventory(int howMany, int productID) {
 		// TODO Auto-generated method stub
 		
 	}

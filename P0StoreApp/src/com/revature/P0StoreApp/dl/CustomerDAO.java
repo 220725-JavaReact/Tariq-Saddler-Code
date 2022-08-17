@@ -84,6 +84,12 @@ public class CustomerDAO implements DAO<customer>{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void incrementInventory(int howMany, int productID) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

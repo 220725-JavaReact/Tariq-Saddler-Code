@@ -1,25 +1,50 @@
-info	2022-08-17T06:11:14.252550	Starting the program...
-info	2022-08-17T09:11:28.840451600	Starting the program...
-info	2022-08-17T09:11:28.843314100	loginOrRegisterHere() method executing
-info	2022-08-17T09:11:30.876687900	Input login credentials...
-warning	2022-08-17T09:11:48.254983700	INVALID CREDENTIALS. Consider registering.
-info	2022-08-17T09:11:48.254983700	loginOrRegisterHere() method executing
-warning	2022-08-17T09:12:20.237813300	INVALID INPUT for 
-info	2022-08-17T09:12:20.238813100	loginOrRegisterHere() method executing
-info	2022-08-17T09:12:27.442475200	Input login credentials...
-info	2022-08-17T09:12:34.834902700	Select store method executing...
-info	2022-08-17T09:12:36.675202600	Store successfully entered.
-info	2022-08-17T09:12:36.675202600	Welcome!
-info	2022-08-17T09:12:36.676203200	Displaying options.
-info	2022-08-17T09:12:49.719428	INVALID INPUT. Please read/type the options carefully.
-info	2022-08-17T09:12:49.720434500	Displaying options.
-info	2022-08-17T09:12:51.496969700	'Cart' entered. Displaying cart items.
-warning	2022-08-17T09:12:51.496969700	CART EMPTY. Nothing to display.
-info	2022-08-17T09:12:51.497967300	Displaying options.
-info	2022-08-17T09:13:05.659346900	'Shop' entered. Displaying products from this store.
-info	2022-08-17T09:13:06.124691400	Prompting user to input the product's name.
-info	2022-08-17T09:13:14.517677500	Adding item to cart and decrementing store inventory
-info	2022-08-17T09:13:14.927072500	INVALID INPUT. Please read/type the options carefully.
-info	2022-08-17T09:13:14.928123700	Displaying options.
-info	2022-08-17T09:13:20.121706900	'Cart' entered. Displaying cart items.
-info	2022-08-17T09:13:22.937753	Displaying options.
+info	2022-08-17T11:43:05.312559700	Starting the program...
+info	2022-08-17T11:43:05.316551200	loginOrRegisterHere() method executing
+info	2022-08-17T11:43:16.256516500	Input new registration form.
+warning	2022-08-17T11:43:20.425566500	NULL INPUT. Please input your first name.
+warning	2022-08-17T11:43:24.757391800	NULL INPUT. Please input your last name.
+info	2022-08-17T11:43:53.953143400	New customer registered!
+info	2022-08-17T11:43:54.383155300	loginOrRegisterHere() method executing
+info	2022-08-17T11:44:06.162734700	Input login credentials...
+warning	2022-08-17T11:44:13.381722200	INVALID CREDENTIALS. Consider registering.
+info	2022-08-17T11:44:13.383722200	loginOrRegisterHere() method executing
+info	2022-08-17T11:44:25.954851	Input login credentials...
+info	2022-08-17T11:44:35.148848500	Select store method executing...
+info	2022-08-17T11:44:55.108866	Store successfully entered.
+info	2022-08-17T11:44:55.109863500	Welcome!
+info	2022-08-17T11:44:55.110864200	Displaying options.
+info	2022-08-17T11:45:34.056396400	'Shop' entered. Displaying products from this store.
+info	2022-08-17T11:45:34.508930100	Prompting user to input the product's name.
+info	2022-08-17T11:45:59.557550600	Adding item to cart and decrementing store inventory
+info	2022-08-17T11:45:59.971734100	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:45:59.971734100	Displaying options.
+info	2022-08-17T11:46:25.622014500	'Cart' entered. Displaying cart items.
+info	2022-08-17T11:46:30.189960500	Displaying options.
+info	2022-08-17T11:46:51.356276700	'Shop' entered. Displaying products from this store.
+info	2022-08-17T11:46:51.758282700	Prompting user to input the product's name.
+info	2022-08-17T11:47:10.372405200	Adding item to cart and decrementing store inventory
+info	2022-08-17T11:47:10.767509600	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:47:10.768517400	Displaying options.
+info	2022-08-17T11:47:23.591068300	'Replenish' entered. Displaying products from this store.
+info	2022-08-17T11:47:44.494496700	Replenishing inventory of specified item.
+info	2022-08-17T11:47:57.949388600	Displaying options.
+info	2022-08-17T11:48:04.647469300	'Shop' entered. Displaying products from this store.
+info	2022-08-17T11:48:05.052630	Prompting user to input the product's name.
+info	2022-08-17T11:48:29.922037700	Adding item to cart and decrementing store inventory
+info	2022-08-17T11:48:30.330724200	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:48:30.331725700	Displaying options.
+info	2022-08-17T11:48:48.450903900	'Cart' entered. Displaying cart items.
+info	2022-08-17T11:49:00.151524600	Displaying options.
+info	2022-08-17T11:49:16.846557300	'Checkout' entered.
+info	2022-08-17T11:49:18.840349300	Items successfuly checked out
+info	2022-08-17T11:49:18.842359700	Store successfully entered.
+info	2022-08-17T11:49:18.843348100	Welcome!
+info	2022-08-17T11:49:18.844353200	Displaying options.
+info	2022-08-17T11:49:33.914319600	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:49:33.915338900	Displaying options.
+info	2022-08-17T11:49:37.286815600	'History' entered. Displaying current customer's order history.
+info	2022-08-17T11:50:45.942648500	Displaying options.
+info	2022-08-17T11:51:08.304393200	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:51:08.305393800	Displaying options.
+info	2022-08-17T11:51:10.235570900	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-17T11:51:10.237569700	Displaying options.

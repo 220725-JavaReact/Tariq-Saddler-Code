@@ -2,9 +2,13 @@ package com.revature.P0StoreApp.test;
 
 import java.util.ArrayList;
 
+import com.revature.P0StoreApp.dl.DAO;
+import com.revature.P0StoreApp.dl.OrdersDAO;
 import com.revature.P0StoreApp.models.customer;
+import com.revature.P0StoreApp.models.order_history;
 
 public class P0StoreAppTest {
+	private static DAO<order_history> ordersDao = new OrdersDAO();
 	
 	@Test
 	public void Customer_UN_Setter()
@@ -58,5 +62,6 @@ public class P0StoreAppTest {
 		//Assert
 		
     }
+	
 
 }

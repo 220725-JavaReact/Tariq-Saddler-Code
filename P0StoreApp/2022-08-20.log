@@ -1,0 +1,11 @@
+info	2022-08-20T12:27:21.457878200	Starting the program...
+info	2022-08-20T12:27:21.461878800	loginOrRegisterHere() method executing
+info	2022-08-20T12:27:23.717813100	Input login credentials...
+info	2022-08-20T12:27:29.469159300	Select store method executing...
+info	2022-08-20T12:27:31.258913700	Store successfully entered.
+info	2022-08-20T12:27:31.259909500	Welcome!
+info	2022-08-20T12:27:31.260877400	Displaying options.
+info	2022-08-20T12:27:37.614069400	INVALID INPUT. Please read/type the options carefully.
+info	2022-08-20T12:27:37.615067600	Displaying options.
+info	2022-08-20T12:27:39.419199500	'Shop' entered. Displaying products from this store.
+info	2022-08-20T12:27:39.821392300	Prompting user to input the product's name.

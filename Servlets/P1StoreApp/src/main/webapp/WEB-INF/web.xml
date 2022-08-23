@@ -1,0 +1,45 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <!-- Also known as the deployment descriptor. This file is in charge of mapping URL patterns
+  to the servlets that would handle requests sent to that URL-->
+  
+  <!-- Contains info about the sevlet we are making available to handle requests -->
+  <servlet>
+  <!-- How we will reference the servlet in this deployment descriptor-->
+  <servlet-name>HelloServlet</servlet-name>
+  <!-- Actual class of servlet so the server knows which class to instantiate or call. -->
+  <servlet-class>com.revature.servlets.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>HelloServlet</servlet-name>
+  <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>RedirectServlet</servlet-name>
+  <servlet-class>com.revature.servlets.RedirectServlet</servlet-class>
+  
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>RedirectServlet</servlet-name>
+  <url-pattern>/redirect</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>DirectServlet</servlet-name>
+  <servlet-class>com.revature.servlets.DirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>DirectServlet</servlet-name>
+  <url-pattern>/direct</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

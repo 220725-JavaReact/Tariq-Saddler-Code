@@ -50,6 +50,8 @@ public class Menu {
 		System.out.println("Unit testing starting...");
 		
 		System.out.println("--------------------------");
+		order_history newOrder = new order_history(0, 1, 1, "datetime", 10.99);
+		ordersDao.addInstance(newOrder);
 		
 		P0StoreAppTest StoreTest = new P0StoreAppTest();
 
@@ -300,6 +302,7 @@ public class Menu {
 		userInput = scanner.nextInt();
 		for(store shop: storeDao.getAllInstances()) 
 		{
+			//System.out.println(shop.getStoreID()+ " == " + (userInput - 1));
 			if(shop.getStoreID() == userInput -1)
 			{
 				shopHere(currentID, currentName, shop.getStoreID()+1, shop.getStoreName());
@@ -417,7 +420,7 @@ public class Menu {
 			}
 			
 			
-			if(userInput.equals("replenish"))
+			else if(userInput.equals("replenish"))
 			{
 				logger.log(LogLevel.info, "'Replenish' entered. Displaying products from this store.");
 				for(products product: productDao.getAllInstances())
@@ -480,7 +483,7 @@ public class Menu {
 				if(currentPrice > 0)
 				{
 					String dateTime = LocalDateTime.now().toString();
-					order_history oHistory = new order_history(storeID, currentID, dateTime, cartTotal);
+					order_history oHistory = new order_history(0, storeID, currentID, dateTime, cartTotal);
 					ordersDao.addInstance(oHistory);
 					int thisOrderID = ordersDao.findID(oHistory);
 					
@@ -536,6 +539,7 @@ public class Menu {
 				storeSelect(currentID, currentName);
 			}
 			
+			
 			else if(userInput.equals("History"))
 			{
 				logger.log(LogLevel.info, "'History' entered. Displaying current customer's order history.");
@@ -559,7 +563,7 @@ public class Menu {
 							//System.out.println("PID: " + thisProductID + " = " +ohpList.getProductID() + "?");
 							if(ohpList.getOrderID() == thisOrderID && thisProductID == ohpList.getProductID())//ohpList.getOrderID() == thisOrderID && product.getProductID() == ohpList.getProductID()
 							{
-								System.out.println(ohpList.getHowMany() + " of the " + product.getName());
+								System.out.println(ohpList.getHowMany() + " units of the " + product.getName());
 							}
 						}
 					}
@@ -574,9 +578,9 @@ public class Menu {
 				if(cart.size() > 1)
 				{
 					String dateTime = LocalDateTime.now().toString();
-					order_history oHistory = new order_history(storeID, currentID, dateTime, cartTotal);
-					ordersDao.addInstance(oHistory);
-					int thisOrderID = ordersDao.findID(oHistory);
+					//order_history oHistory = new order_history(storeID, currentID, dateTime, cartTotal);
+					//ordersDao.addInstance(oHistory);
+					//int thisOrderID = ordersDao.findID(oHistory);
 					
 					
 					
@@ -605,7 +609,7 @@ public class Menu {
 								//System.out.println("PID: " + thisProductID + " = " +ohpList.getProductID() + "?");
 								if(thisProductID == thisID)//ohpList.getOrderID() == thisOrderID && product.getProductID() == ohpList.getProductID()
 								{
-									System.out.println(howMany + " of the " + product.getName() + "s");
+									System.out.println(howMany + " units of the " + product.getName() + "s");
 								}
 							}
 							howMany = 1;

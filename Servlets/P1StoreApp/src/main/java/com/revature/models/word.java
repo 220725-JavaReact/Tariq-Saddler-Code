@@ -1,11 +1,11 @@
 package com.revature.models;
 
-public class word {
+public class Word {
 	private int wordID;
 	private int length;
 	private String wordName;
 	
-	public word(int wordID, int length, String wordName)
+	public Word(int wordID, int length, String wordName)
 	{
 		this.wordID = wordID;
 		this.length = length;

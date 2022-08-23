@@ -19,7 +19,7 @@ public class OrdersDAO implements DAO<order_history>{
 	@Override
 	public void addInstance(order_history newInstance) {
 		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
-			String query = "Insert into order_history (fk_StoreID, fk_CustomerID, datetime, total_cost) values (?, ?, ?, ?)";
+			String query = "Insert into order_history (OrderID, fk_StoreID, fk_CustomerID, datetime, total_cost) values (DEFAULT, ?, ?, ?, ?)";
 			PreparedStatement pstmt = connie.prepareStatement(query);
 			pstmt.setInt(1, newInstance.getStoreID()); 
 			pstmt.setInt(2, newInstance.getCustomerID());
@@ -40,7 +40,7 @@ public class OrdersDAO implements DAO<order_history>{
 			Statement stmt = connie.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
-				ohList.add(new order_history(rs.getInt("fk_StoreID"), rs.getInt("fk_CustomerID"), rs.getString("datetime"), rs.getDouble("total_cost")));
+				ohList.add(new order_history(rs.getInt("OrderID"), rs.getInt("fk_StoreID"), rs.getInt("fk_CustomerID"), rs.getString("datetime"), rs.getDouble("total_cost")));
 			}
 			
 		} catch (SQLException e) {

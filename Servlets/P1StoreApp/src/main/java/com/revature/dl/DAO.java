@@ -7,3 +7,4 @@ public interface DAO<T> {
 	T findSecretWord();
 	
 }
+ 

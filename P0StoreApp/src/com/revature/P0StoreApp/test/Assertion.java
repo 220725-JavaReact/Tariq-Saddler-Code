@@ -3,6 +3,7 @@ package com.revature.P0StoreApp.test;
 import java.util.ArrayList;
 
 import com.revature.P0StoreApp.models.customer;
+import com.revature.P0StoreApp.models.order_history;
 
 public class Assertion {
 	public static void Equals(ArrayList<String> expected, ArrayList<String> actual)
@@ -71,4 +72,8 @@ public class Assertion {
 		Evaluate(flag, "Fail");
 	}
 
+	public static void orderHistoryID(order_history expected, order_history actual)
+	{
+		
+	}
 }

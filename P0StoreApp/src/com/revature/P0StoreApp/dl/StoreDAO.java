@@ -20,7 +20,7 @@ public class StoreDAO implements DAO<store> {
 			Statement stmt = connie.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
-				sList.add(new store(rs.getString("s_name"), rs.getString("s_address")));
+				sList.add(new store(rs.getInt("storeid"), rs.getString("s_name"), rs.getString("s_address")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,6 +44,23 @@ public class StoreDAO implements DAO<store> {
 	@Override
 	public int findID(store newInstance) {
 		// TODO Auto-generated method stub
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			String query = "select storeid from stores where s_name = " + newInstance.getStoreName()+ " and s_address = " + newInstance.getStoreAddress();//(fk_StoreID, fk_CustomerID, datetime, total_cost) values (?, ?, ?, ?)";
+			//PreparedStatement pstmt = connie.prepareStatement(query);
+//			pstmt.setInt(1, newInstance.getStoreID()); 
+//			pstmt.setInt(2, newInstance.getCustomerID());
+//			pstmt.setString(3, newInstance.getDateTime()); 
+//			pstmt.setDouble(4, newInstance.getTotalCost());
+			Statement stmt = connie.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				return rs.getInt("storeid");
+			}
+			//pstmt.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return -1;
 	}
 

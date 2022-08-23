@@ -8,8 +8,9 @@ public class store {
 	private  String storeAddress;
 	
 	
-	public store(String storeName, String storeAddress)
+	public store(int storeID, String storeName, String storeAddress)
 	{
+		this.storeID = storeID;
 		this.storeName = storeName;
 		this.storeAddress = storeAddress;
 	}

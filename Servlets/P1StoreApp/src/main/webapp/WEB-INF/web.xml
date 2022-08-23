@@ -42,4 +42,13 @@
   <url-pattern>/direct</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>PlayServlet</servlet-name>
+  <servlet-class>com.revature.servlets.PlayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>PlayServlet</servlet-name>
+  <url-pattern>/play</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

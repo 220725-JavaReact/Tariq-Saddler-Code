@@ -1,6 +1,7 @@
 package com.revature.dl;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,6 +80,12 @@ public class wordDAO implements DAO<word>{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<word> getAllInstances() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

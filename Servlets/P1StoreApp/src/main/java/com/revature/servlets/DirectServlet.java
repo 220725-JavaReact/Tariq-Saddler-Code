@@ -27,17 +27,17 @@ public class DirectServlet extends HttpServlet{
 		System.out.println("Direct get");
 		res.setContentType("text/html");
 		res.getWriter().write("<html><body><h1>The Servlet is talking directly to the client</h1></body</html>");
-		res.getWriter().write("<html><body><h1>The WORD: " + newWord + " The INT: " + newInt + "</h1></body</html>");
-		res.getWriter().write("<html><body>"
+		res.getWriter().write("<body><h1>The WORD: " + newWord + " The INT: " + newInt + "</h1></body>");
+		res.getWriter().write("<body>"
 				+ "<form method = \"get\" action = \"/P1StoreApp/direct\">"
 					+ "<input type = \"submit\" value = \"Direct Text Response\"/>"
 					+ "</form>"
-				+ "</body></html>");
+				+ "</body>");
 		
 		
 		//res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
-		out.println("<html>"); 
+		
         out.println("<head>"); 
         out.println("<title>Input Servlet</title>"); 
         out.println("</head>"); 
@@ -46,13 +46,13 @@ public class DirectServlet extends HttpServlet{
         out.println("Hello " + newWord); 
         out.println("</h1>"); 
         out.println("</body>"); 
-        out.println("</html>"); 
+     
 		
 		//res.getWriter().write("<html><body><h1>Your word is " + newWord + "</h1></body</html>");
 		
 		if(newInt > 100)
 		{
-			res.getWriter().write("<html><body><h1>The Servlet is talking directly to the client</h1></body</html>");
+			res.getWriter().write("<body><h1>The Servlet is talking directly to the client</h1></body</html>");
 			newInt = 0;
 		}
 		

@@ -8,6 +8,13 @@ public class Guess {
 	
 	
 	
+	public Guess(String guessName, int bulls, int cows) {
+		super();
+		//this.guessID = guessID;
+		this.guessName = guessName;
+		this.bulls = bulls;
+		this.cows = cows;
+	}
 	
 	public Guess(int guessID, String guessName, int bulls, int cows) {
 		super();
@@ -16,6 +23,7 @@ public class Guess {
 		this.bulls = bulls;
 		this.cows = cows;
 	}
+	
 	public int getGuessID() {
 		return guessID;
 	}

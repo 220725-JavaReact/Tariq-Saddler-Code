@@ -33,7 +33,7 @@ public class wordDAO implements DAO<word>{
 					+ "LIMIT 1)";	
 			
 			Statement stmt = connie.createStatement();
-			stmt.executeQuery(query);
+			stmt.execute(query);
 			
 			
 			
@@ -67,9 +67,10 @@ public class wordDAO implements DAO<word>{
 			
 			if(rs.next()) {
 				String wordName = rs.getString("wordName");
-				word word = new word(wordName.length(), wordName);
+				word newWord = new word(wordName.length(), wordName);
 				
-				return word;
+				return newWord;
+				
 			}
 			else
 			{

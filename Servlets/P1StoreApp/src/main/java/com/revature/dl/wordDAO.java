@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.revature.models.Word;
+import com.revature.models.word;
 import com.revature.util.ConnectionFactory;
 
-public class wordDAO implements DAO<Word>{
+public class wordDAO implements DAO<word>{
 
 	@Override
-	public void addInstance(Word newInstance) {
+	public void addInstance(word newInstance) {
 		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
 			String query = "Insert into wordsList (wordLength, wordName) values (?, ?)";
 			PreparedStatement pstmt = connie.prepareStatement(query);
@@ -57,7 +57,7 @@ public class wordDAO implements DAO<Word>{
 	}
 	
 	@Override
-	public Word findSecretWord() {//return the "chosen" word
+	public word findSecretWord() {//return the "chosen" word
 		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
 			String query = "SELECT * FROM wordsList where chosen = true" ;	
 			
@@ -67,7 +67,7 @@ public class wordDAO implements DAO<Word>{
 			
 			if(rs.next()) {
 				String wordName = rs.getString("wordName");
-				Word word = new Word(wordName.length(), wordName);
+				word word = new word(wordName.length(), wordName);
 				
 				return word;
 			}

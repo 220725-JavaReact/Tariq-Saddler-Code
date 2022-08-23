@@ -15,12 +15,12 @@ import com.revature.models.*;
 public class DirectServlet extends HttpServlet{
 	int newInt = 0;
 	
-	private static DAO<Word> wordDao = new wordDAO();
+	private static DAO<word> wordDao = new wordDAO();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
 		String newWord = req.getParameter("Word");
-		Word brandNewWord = new Word(newWord.length(), newWord);
+		word brandNewWord = new word(newWord.length(), newWord);
 		wordDao.addInstance(brandNewWord);
 		
 		newInt += 4;

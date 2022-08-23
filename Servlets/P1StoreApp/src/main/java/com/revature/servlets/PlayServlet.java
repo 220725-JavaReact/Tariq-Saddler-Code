@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.dl.DAO;
 import com.revature.dl.wordDAO;
-import com.revature.models.Word;
+import com.revature.models.word;
 
 public class PlayServlet extends HttpServlet{
 	
 	
-	private static DAO<Word> wordDao = new wordDAO();
+	private static DAO<word> wordDao = new wordDAO();
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
 		res.setContentType("text/html");
 		res.getWriter().write("<html><body><h1>THIS IS THE PLAY PAGE</h1></body</html>");
 		
 		
-		Word secret_word = null;
+		word secret_word = null;
 		if(wordDao.findSecretWord() == null)
 		{
 			wordDao.markSecretWord();

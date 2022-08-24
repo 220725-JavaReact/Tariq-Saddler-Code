@@ -15,7 +15,7 @@ import com.revature.dl.wordDAO;
 import com.revature.models.Guess;
 import com.revature.models.word;
 
-public class ResetServlet extends HttpServlet{
+public class WinServlet extends HttpServlet{
 	private static DAO<word> wordDao = new wordDAO();
 	private static DAO<Guess> guessDao = new GuessDAO();
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
@@ -28,7 +28,7 @@ public class ResetServlet extends HttpServlet{
         out.println("<title>Input Servlet</title>"); 
         out.println("</head>"); 
         out.println("<body>"); 
-        out.println("<h1>YOU LOSE</h1>");  
+        out.println("<h1>WELL DONE!</h1>");  
         
         
         //for loop print guesses, bulls, and cows
@@ -59,8 +59,6 @@ public class ResetServlet extends HttpServlet{
         
         
         guessDao.truncateTable();
-//        res.sendRedirect("http://localhost:8080/P1StoreApp/play");
-        
-        
 	}
+
 }

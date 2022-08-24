@@ -60,4 +60,13 @@
   <url-pattern>/reset</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>WinServlet</servlet-name>
+  <servlet-class>com.revature.servlets.WinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>WinServlet</servlet-name>
+  <url-pattern>/win</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

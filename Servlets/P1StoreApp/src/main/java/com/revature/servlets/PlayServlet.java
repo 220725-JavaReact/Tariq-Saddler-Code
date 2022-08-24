@@ -15,6 +15,8 @@ import com.revature.dl.GuessDAO;
 import com.revature.dl.wordDAO;
 import com.revature.models.Guess;
 import com.revature.models.word;
+import java.util.stream.IntStream;
+
 
 public class PlayServlet extends HttpServlet{
 	int bulls = 0;
@@ -26,7 +28,15 @@ public class PlayServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
 		
+		word secret_word = null;
+		if(wordDao.findSecretWord() == null)
+		{
+			//System.out.println("IN THE IF STATEMENT");
+			wordDao.markSecretWord();
+
+		}
 		
+		secret_word = wordDao.findSecretWord();
 		
 		
 		String newGuess = req.getParameter("Guess");
@@ -35,8 +45,42 @@ public class PlayServlet extends HttpServlet{
 		{
 			
 			//MAKE BULLS AND COWS LOGIC HERE, compare guess to secret_word
+//			for(int i = 0; i < newGuess.length(); i++)
+//			{
+//				if(secret_word.getWordName().toLowerCase().charAt(i) == newGuess.toLowerCase().charAt(i))
+//				{
+//					bulls++;
+//				}
+//			}
+			cows = 0;
+			bulls = 0;
+			
+			for(int i = 0; i < newGuess.length(); i++)
+			{
+				for(int x = 0; x<secret_word.getWordName().length(); x++)
+				{
+					//play (secret word)
+					//paly (guess)
+					if(secret_word.getWordName().toLowerCase().charAt(x) == newGuess.toLowerCase().charAt(i) && i == x)
+					{
+						bulls++;
+					}
+					if(secret_word.getWordName().toLowerCase().charAt(x) == newGuess.toLowerCase().charAt(i) && i != x)
+					{
+						cows++;
+					}
+				}
+			}
+			
+		
+			
 			//If GUESS is the same as secret_word, redirect to WinServlet
-			//Display all guesses (bulls and cows) together with the last one
+			if(newGuess.toLowerCase().equals(secret_word.getWordName().toLowerCase()))
+			{
+				//Display all guesses (bulls and cows) together with the last one
+				res.sendRedirect("http://localhost:8080/P1StoreApp/win");
+			}
+			
 			//
 			
 			
@@ -60,17 +104,9 @@ public class PlayServlet extends HttpServlet{
         
 		
 		
-		word secret_word = null;
-		if(wordDao.findSecretWord() == null)
-		{
-			//System.out.println("IN THE IF STATEMENT");
-			wordDao.markSecretWord();
-
-		}
 		
-		secret_word = wordDao.findSecretWord();
 		
-		//out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
+		out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
 		out.println("<h1>THE SECRET WORD LENGTH " + secret_word.getLength() + "</h1>");
 		
 		
@@ -101,8 +137,8 @@ public class PlayServlet extends HttpServlet{
 		out.println("</form>");
 		
 		
-		cows += 2;
-		bulls++;
+//		cows += 2;
+//		bulls++;
 		
 		
 		out.println("</body>"); 

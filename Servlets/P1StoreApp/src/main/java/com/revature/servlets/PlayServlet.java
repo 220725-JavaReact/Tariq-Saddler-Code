@@ -3,6 +3,7 @@ package com.revature.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,16 +19,34 @@ import com.revature.models.word;
 public class PlayServlet extends HttpServlet{
 	int bulls = 0;
 	int cows = 0;
-	
+	public static boolean flag = false;
 	
 	private static DAO<word> wordDao = new wordDAO();
 	private static DAO<Guess> guessDao = new GuessDAO();
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
 		
+		
+		
+		
 		String newGuess = req.getParameter("Guess");
-		Guess brandNewGuess = new Guess(newGuess, bulls, cows);
-		guessDao.addInstance(brandNewGuess);
+		
+		if(!Objects.equals(null, newGuess))
+		{
+			
+			//MAKE BULLS AND COWS LOGIC HERE, compare guess to secret_word
+			//If GUESS is the same as secret_word, redirect to WinServlet
+			//Display all guesses (bulls and cows) together with the last one
+			//
+			
+			
+			Guess brandNewGuess = new Guess(newGuess, bulls, cows);
+			guessDao.addInstance(brandNewGuess);
+			
+		}
+			
+		
+		
 		
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
@@ -44,15 +63,15 @@ public class PlayServlet extends HttpServlet{
 		word secret_word = null;
 		if(wordDao.findSecretWord() == null)
 		{
-			System.out.println("IN THE IF STATEMENT");
+			//System.out.println("IN THE IF STATEMENT");
 			wordDao.markSecretWord();
-			
-			
+
 		}
 		
 		secret_word = wordDao.findSecretWord();
 		
-		out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
+		//out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
+		out.println("<h1>THE SECRET WORD LENGTH " + secret_word.getLength() + "</h1>");
 		
 		
 		out.println("<label>GUESS___</label><label>BULLS___</label><label>COWS___</label>");
@@ -67,26 +86,30 @@ public class PlayServlet extends HttpServlet{
 		
 		
 		
+		
+		
 		out.println("<form method = \"get\" action = \"/P1StoreApp/play\">");
-		out.println("<br><input type = \"text\" name = \"Guess\" size = 5>");
+		out.println("<br><input type = \"text\" maxlength="+ secret_word.getLength() + " minlength=" + secret_word.getLength() + " name = \"Guess\" required size = 5>");
+		
 		out.println("<input type = \"submit\" value = \"GUESS\">");
+	
+		out.println("</form>");
 		
 		
-		
+		out.println("<form method = \"get\" action = \"/P1StoreApp/reset\">");
+		out.println("<input type = \"submit\" value = \"GIVE UP\">");
 		out.println("</form>");
 		
 		
 		cows += 2;
 		bulls++;
 		
+		
 		out.println("</body>"); 
 		out.println("</html>");
 		
-		
-		
-		
-		
-		
+		flag = true;
+
 		
 	}
 }

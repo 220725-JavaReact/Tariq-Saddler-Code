@@ -51,4 +51,13 @@
   <url-pattern>/play</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>ResetServlet</servlet-name>
+  <servlet-class>com.revature.servlets.ResetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>ResetServlet</servlet-name>
+  <url-pattern>/reset</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

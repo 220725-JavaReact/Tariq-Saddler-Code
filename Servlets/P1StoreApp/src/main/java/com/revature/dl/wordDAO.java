@@ -89,5 +89,11 @@ public class wordDAO implements DAO<word>{
 		return null;
 	}
 
+	@Override
+	public void truncateTable() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

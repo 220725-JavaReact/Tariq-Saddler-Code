@@ -64,4 +64,18 @@ public class GuessDAO implements DAO<Guess>{
 		return newGuessList.getAllElements();
 	}
 
+	@Override
+	public void truncateTable() {
+		try(Connection connie = ConnectionFactory.getInstance().getConnection()){
+			String query = "truncate table guessList";
+			Statement stmt = connie.createStatement();
+			stmt.executeQuery(query);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 }

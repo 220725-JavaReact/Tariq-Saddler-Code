@@ -29,6 +29,7 @@ public class ResetServlet extends HttpServlet{
         out.println("</head>"); 
         out.println("<body>"); 
         out.println("<h1>YOU LOSE</h1>");  
+        out.println("<h1>AFTER " + PlayServlet.tries + " TRIES</h1>");
         
         
         //for loop print guesses, bulls, and cows
@@ -59,6 +60,8 @@ public class ResetServlet extends HttpServlet{
         
         
         guessDao.truncateTable();
+        
+        PlayServlet.tries = 0;
 //        res.sendRedirect("http://localhost:8080/P1StoreApp/play");
         
         

@@ -29,6 +29,7 @@ public class WinServlet extends HttpServlet{
         out.println("</head>"); 
         out.println("<body>"); 
         out.println("<h1>WELL DONE!</h1>");  
+        out.println("<h1>AND IT ONLY TOOK " + PlayServlet.tries + " TRIES</h1>");
         
         
         //for loop print guesses, bulls, and cows
@@ -43,7 +44,7 @@ public class WinServlet extends HttpServlet{
 		}
         //the secret word was: secret word
      
-        out.println("<h1>THE SECRET WORD WAS " + wordDao.findSecretWord().getWordName() + "</h1>");
+        out.println("<h1>The secret word was " + wordDao.findSecretWord().getWordName() + "!</h1>");
         
         //set new secret word
         wordDao.unMarkSecretWord();
@@ -57,8 +58,8 @@ public class WinServlet extends HttpServlet{
 		out.println("</form>");
         
         
-        
         guessDao.truncateTable();
+        PlayServlet.tries = 0;
 	}
 
 }

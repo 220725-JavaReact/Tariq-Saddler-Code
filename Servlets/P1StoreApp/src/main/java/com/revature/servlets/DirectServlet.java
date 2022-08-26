@@ -19,42 +19,86 @@ public class DirectServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
-		String newWord = req.getParameter("Word");
-		word brandNewWord = new word(newWord.length(), newWord);
-		wordDao.addInstance(brandNewWord);
 		
-		newInt += 4;
-		System.out.println("Direct get");
+		String newWord = req.getParameter("Word");
+		
+		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
-		res.getWriter().write("<html><body><h1>The Servlet is talking directly to the client</h1></body</html>");
-		res.getWriter().write("<body><h1>The WORD: " + newWord + " The INT: " + newInt + "</h1></body>");
-		res.getWriter().write("<body>"
-				+ "<form method = \"get\" action = \"/P1StoreApp/direct\">"
-					+ "<input type = \"submit\" value = \"Direct Text Response\"/>"
-					+ "</form>"
-				+ "</body>");
+		
+		boolean isHeterogram = true;
+		
+		
+		//level
+		for(int i = 0; i<newWord.length(); i++)
+		{
+			for(int x = i+1; x<newWord.length(); x++)
+			{
+				if(newWord.charAt(i) == newWord.charAt(x))
+				{
+					isHeterogram = false;
+					break;
+				}
+			}
+			if(!isHeterogram)
+			{
+				break;
+			}
+		}
+		
+		if(isHeterogram)
+		{
+			word brandNewWord = new word(newWord.length(), newWord);
+			wordDao.addInstance(brandNewWord);
+			System.out.println("Direct get");
+			res.setContentType("text/html");
+			//res.getWriter().write("<html><body><h1>The Servlet is talking directly to the client</h1></body</html>");
+			res.getWriter().write("<body><h1>The word " + newWord + " WAS SUCCESSFULLY ADDED TO THE DATABASE!</h1></body>");
+			
+			out.println("<form method = \"get\" action = \"/P1StoreApp/play\">");
+			
+			out.println("<input type = \"submit\" value = \"PLAY GAME\">");
+			
+			out.println("</form>");
+			
+			out.println("<form method = \"get\" action = \"/P1StoreApp/direct\">");
+			
+			out.println("<p>Input another heterogram (a word with no repeating letters) to the database</p>");
+			
+			out.println("<input type = \"text\" minlength = 2 maxlength = 6 name = \"Word\" required><br>");
+			
+			out.println("<input type = \"submit\" value = \"SUBMIT\">");
+			
+			out.println("</form>");
+			
+		}
+		else
+		{
+			res.setContentType("text/html");
+			res.getWriter().write("<body><h1>The word " + newWord + " is NOT a heterogram!</h1></body>");
+			out.println("<h1>Remember, a heterogram is a word with NO repeating letters! </h1><br>");
+			
+			out.println("<form method = \"get\" action = \"/P1StoreApp/play\">");
+			
+			out.println("<input type = \"submit\" value = \"PLAY GAME\">");
+			
+			out.println("</form>");
+			
+			out.println("<form method = \"get\" action = \"/P1StoreApp/direct\">");
+			out.println("<p>Input another heterogram to the database</p>");
+			out.println("<input type = \"text\" minlength = 2 maxlength = 6 name = \"Word\" required><br>");
+			out.println("<input type = \"submit\" value = \"SUBMIT\">");
+			
+			out.println("</form>");
+			
+		}
+		
 		
 		
 		//res.setContentType("text/html");
-		PrintWriter out = res.getWriter();
-		
-        out.println("<head>"); 
-        out.println("<title>Input Servlet</title>"); 
-        out.println("</head>"); 
-        out.println("<body>"); 
-        out.println("<h1>"); 
-        out.println("Hello " + newWord); 
-        out.println("</h1>"); 
-        out.println("</body>"); 
      
 		
 		//res.getWriter().write("<html><body><h1>Your word is " + newWord + "</h1></body</html>");
 		
-		if(newInt > 100)
-		{
-			res.getWriter().write("<body><h1>The Servlet is talking directly to the client</h1></body</html>");
-			newInt = 0;
-		}
 		
 		/*<form method = "get" action = "/P1StoreApp/direct">
 			<p>Direct Servlet, GET</p>

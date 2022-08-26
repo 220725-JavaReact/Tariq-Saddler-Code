@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
 public class PlayServlet extends HttpServlet{
 	int bulls = 0;
 	int cows = 0;
-	public static boolean flag = false;
+	public static int tries = 0;
 	
 	private static DAO<word> wordDao = new wordDAO();
 	private static DAO<Guess> guessDao = new GuessDAO();
@@ -100,24 +100,29 @@ public class PlayServlet extends HttpServlet{
         out.println("<title>Input Servlet</title>"); 
         out.println("</head>"); 
         out.println("<body>"); 
-        out.println("<h1>THIS IS THE PLAY PAGE</h1>");   
+        out.println("<h1>GOOD LUCK!</h1>");   
         
 		
 		
 		
 		
-		out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
-		out.println("<h1>THE SECRET WORD LENGTH " + secret_word.getLength() + "</h1>");
+		//out.println("<h1>THE SECRET WORD IS " + secret_word.getWordName() + "</h1>");
+		out.println("<h1>The secret word has " + secret_word.getLength() + " letters!</h1>");
+		
+		out.println("<h3>The secret word will always be a heterogram!</h3>");  
 		
 		
-		out.println("<label>GUESS___</label><label>BULLS___</label><label>COWS___</label>");
+		out.println("<label>TRIES___GUESS___</label><label>BULLS___</label><label>COWS___</label>");
 		ArrayList<Guess> guesses = guessDao.getAllInstances();
 		if(guesses.size() != 0)
 		{
+			tries++;
 			for(Guess thisGuess: guessDao.getAllInstances())
 			{
 				out.println("<br><label>GUESS: " + thisGuess.getGuessName() + " BULLS: " + thisGuess.getBulls() + " COWS: "+ thisGuess.getCows() +"</label>");
 			}
+			//tries++;
+			out.println("<br><label>TRIES: "+ tries+"</label>");
 		}
 		
 		
@@ -144,7 +149,9 @@ public class PlayServlet extends HttpServlet{
 		out.println("</body>"); 
 		out.println("</html>");
 		
-		flag = true;
+		
+		
+		//flag = true;
 
 		
 	}

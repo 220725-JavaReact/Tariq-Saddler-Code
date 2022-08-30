@@ -44,7 +44,7 @@ public class ResetServlet extends HttpServlet{
 		}
         //the secret word was: secret word
      
-        out.println("<h1>THE SECRET WORD WAS " + wordDao.findSecretWord().getWordName() + "</h1>");
+        out.println("<h1>THE SECRET WORD WAS \"" + wordDao.findSecretWord().getWordName() + ".\"</h1>");
         
         //set new secret word
         wordDao.unMarkSecretWord();

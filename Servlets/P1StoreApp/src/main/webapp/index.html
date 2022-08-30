@@ -1,10 +1,43 @@
 <html>
 	<body>
-		<h1>WELCOME TO OUR BULLS AND COWS GAME</h1>
-		<p></p>
+		<h3>Team Vanquish Presents...</h3>
+		<h1>THE BULLS AND COWS GAME</h1>
 		
+<pre>
+          .=     ,        =.
+  _  _   /'/    )\,/,/(_   \ \
+   `//-.|  (  ,\\)\//\)\/_  ) |
+   //___\   `\\\/\\/\/\\///'  /
+,-"~`-._ `"--'_   `"""`  _ \`'"~-,_
+\       `-.  '_`.      .'_` \ ,-"~`/
+ `.__.-'`/   (-\        /-) |-.__,'
+   ||   |     \O)  /^\ (O/  |
+   `\\  |         /   `\    /
+     \\  \       /      `\ /
+      `\\ `-.  /' .---.--.\
+        `\\/`~(, '()      ('
+         /(O) \\   _,.-.,_)   -"'Moo' is not a heterogram."
+        //  \\ `\'`      /
+       / |  ||   `""""~"`
+     /'  |__||
+           `o
+</pre>
+
+		<form method = "get" action = "/P1StoreApp/play">
+			<h2>----------------------------------------------------------------------</h2>
+		
+			<h2>Game Instructions:</h2>
+			<p>Try to guess the secret word! You'll recieve 'bulls' and 'cows' depending on how close your answer is to the secret word!</p>
+			<p>Bulls: Number of CORRECT letters in the CORRECT position</p>
+			<p>Cows: Number of CORRECT letters in the WRONG position</p>
+			<p>Press the "PLAY GAME" button to begin!</p>
+		
+			<input type = "submit" value = "PLAY GAME">
+		
+		</form>
+		<h2>----------------------------------------------------------------------</h2>
 		<form method = "get" action = "/P1StoreApp/direct">
-			<p>Input heterogram (a word with no repeating letters) to the database</p>
+			<h3>Input heterogram to the database. (Heterogram: A word with no repeating letters)</h3>
 			<input type = "text" minlength = 2 maxlength = 6 name = "Word" required>
 			<br><br>
 			<input type = "submit" value = "SUBMIT WORD TO DATABASE">
@@ -14,18 +47,7 @@
 			
 		</form>
 		
-		<form method = "get" action = "/P1StoreApp/play">
-			<h2>----------------------------------------------------------------------</h2>
 		
-			<h2>Game Instructions:</h2>
-			<p>Try to guess the secret word! You'll recieve 'bulls' and 'cows' depending on how close your answer is to the secret word!</p>
-			<p>Bulls: Number of correct letters in the correct position</p>
-			<p>Cows: Number of correct letters in the WRONG position</p>
-			<p>Press the "PLAY GAME" button to begin!</p>
-		
-			<input type = "submit" value = "PLAY GAME">
-		
-		</form>
 		
 	</body>
 </html>

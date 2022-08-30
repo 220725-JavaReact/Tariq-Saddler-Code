@@ -44,7 +44,7 @@ public class WinServlet extends HttpServlet{
 		}
         //the secret word was: secret word
      
-        out.println("<h1>The secret word was " + wordDao.findSecretWord().getWordName() + "!</h1>");
+        out.println("<h1>The secret word was \"" + wordDao.findSecretWord().getWordName() + "!\"</h1>");
         
         //set new secret word
         wordDao.unMarkSecretWord();

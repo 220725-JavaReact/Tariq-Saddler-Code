@@ -138,6 +138,7 @@ public class PlayServlet extends HttpServlet{
 		
 		
 		out.println("<form method = \"get\" action = \"/P1StoreApp/reset\">");
+		out.println("<h2>----------------------------------------------------</h2>");
 		out.println("<input type = \"submit\" value = \"GIVE UP\">");
 		out.println("</form>");
 		
